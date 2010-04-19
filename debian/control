@@ -38,6 +38,7 @@ Description: CPU and Memory usage statistics for IOCs
 Package: epics-iocstats-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
+         libiocstats3.1.1 (= ${binary:Version}),
          epics-iocstats (= ${source:Version})
 Recommends: edm-iocstats (= ${source:Version})
 Description: CPU and Memory usage statistics for IOCs
