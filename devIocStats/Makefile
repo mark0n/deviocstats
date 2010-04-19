@@ -32,7 +32,7 @@ SRCS += osdBootInfo.c
 SRCS += osdSystemInfo.c
 SRCS += osdHostInfo.c
 
-LIBS = $(EPICS_BASE_IOC_LIBS)
+devIocStats_LIBS = $(EPICS_BASE_IOC_LIBS)
 
 #===========================
 
