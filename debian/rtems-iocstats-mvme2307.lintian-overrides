@@ -1,0 +1,2 @@
+rtems-iocstats-mvme2307: non-standard-dir-in-usr usr/epics/
+rtems-iocstats-mvme2307: file-in-unusual-dir

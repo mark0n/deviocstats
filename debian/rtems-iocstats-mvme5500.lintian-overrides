@@ -1,0 +1,2 @@
+rtems-iocstats-mvme5500: non-standard-dir-in-usr usr/epics/
+rtems-iocstats-mvme5500: file-in-unusual-dir

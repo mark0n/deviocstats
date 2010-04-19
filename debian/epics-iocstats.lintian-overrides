@@ -1,0 +1,2 @@
+epics-iocstats: non-standard-dir-in-usr usr/epics/
+epics-iocstats: file-in-unusual-dir
