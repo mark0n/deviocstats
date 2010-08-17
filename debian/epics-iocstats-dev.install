@@ -1,2 +1,3 @@
 usr/epics/base/lib/linux-*/lib*.so
+usr/epics/base/lib/linux-*-debug/lib*.so.*
 usr/epics/base/lib/linux-*/lib*.a
