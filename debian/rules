@@ -57,7 +57,7 @@ install-stamp:
 	install -d $(prefix)/lib
 	mv $(epicslibdir)/libdevIocStats.so.$(SOV) $(prefix)/lib/
 	rm -f $(epicslibdir)/libdevIocStats.so
-	ln -s ../../../lib/libdevIocStats.so.$(SOV) $(epicslibdir)/libdevIocStats.so
+	ln -s ../../../../lib/libdevIocStats.so.$(SOV) $(epicslibdir)/libdevIocStats.so
 
 	dh_install -pedm-iocstats iocAdminLib/srcDisplay/*.edl usr/epics/base/op/edl
 
