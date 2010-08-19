@@ -1,3 +1,9 @@
+deviocstats (3.1.1-4) unstable; urgency=low
+
+  * Install in /usr/lib/epics
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Wed, 18 Aug 2010 21:23:41 -0400
+
 deviocstats (3.1.1-3) unstable; urgency=low
 
   * Fix symlink /usr/epics/base/lib/*/libiocstats.so
