@@ -11,7 +11,7 @@ include $(TOP)/RELEASE_SITE
 
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
-EPICS_BASE=/usr/epics/base
+EPICS_BASE=/usr/lib/epics
 
 # End of file
 

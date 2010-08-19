@@ -3,7 +3,7 @@ Section: devel
 Priority: extra
 Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
 Build-Depends: debhelper (>= 7), rtems-debhelper,
-               epics-dev (>= 3.14.10-10), epics-dev (<< 3.14.11),
+               epics-dev (>= 3.14.11-2),
                epics-msi,
                rtems-epics-mvme2100,
                rtems-epics-mvme2307,

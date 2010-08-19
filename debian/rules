@@ -8,7 +8,7 @@ DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 DEB_NOEPOCH_VERSION = $(shell echo $(DEB_VERSION) | cut -d: -f2-)
 SOV=$(shell echo "$(DEB_NOEPOCH_VERSION)"| cut -f 1 -d '-')
 
-EPICS_HOST_ARCH:=$(shell /usr/epics/base/startup/EpicsHostArch)
+EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
 
 RTEMS_TARGETS=RTEMS-mvme2100 RTEMS-mvme2307  RTEMS-mvme3100 RTEMS-mvme5500
 DEBUG_TAGETS=$(EPICS_HOST_ARCH)-debug
@@ -43,32 +43,32 @@ clean:
 	dh clean --after auto_clean
 
 prefix=debian/tmp/usr
-epicsdir=$(prefix)/epics/base
+epicsdir=$(prefix)/lib/epics
 epicslibdir=$(epicsdir)/lib/$(EPICS_HOST_ARCH)
 
 install: build install-stamp
 install-stamp:
 	dh install --before auto_install
 
-	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/epics/base
+	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/lib/epics
 
-	$(DEB_MAKE_INVOKE) -C iocAdminLib/Db INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/epics/base
+	$(DEB_MAKE_INVOKE) -C iocAdminLib/Db INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/lib/epics
 
 	install -d $(prefix)/lib
 	mv $(epicslibdir)/libdevIocStats.so.$(SOV) $(prefix)/lib/
 	rm -f $(epicslibdir)/libdevIocStats.so
 	ln -s ../../../../lib/libdevIocStats.so.$(SOV) $(epicslibdir)/libdevIocStats.so
 
-	dh_install -pedm-iocstats iocAdminLib/srcDisplay/*.edl usr/epics/base/op/edl
+	dh_install -pedm-iocstats iocAdminLib/srcDisplay/*.edl usr/lib/epics/op/edl
 
 	# Replace some SLAC specific names with macros
 	sed -i -e 's|lcls_main|$$(HOME)|' \
 	-e 's|SIOC:SYS0:AL00|$$(STATUS)|' \
-	debian/edm-iocstats/usr/epics/base/op/edl/*.edl
+	debian/edm-iocstats/usr/lib/epics/op/edl/*.edl
 
-	install -m 644 -t debian/epics-iocstats-dev/usr/epics/base/configure/conf.d debian/50iocstats.make
+	install -m 644 -t debian/epics-iocstats-dev/usr/lib/epics/configure/conf.d debian/50iocstats.make
 
-	install -m 644 -t debian/epics-iocstats/usr/epics/base/as/req \
+	install -m 644 -t debian/epics-iocstats/usr/lib/epics/as/req \
 	debian/ioc_stats_settings.req
 
 	dh install --after auto_install
