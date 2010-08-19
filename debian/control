@@ -49,6 +49,7 @@ Description: CPU and Memory usage statistics for IOCs
  IOC with the iocStats support.
 
 Package: edm-iocstats
+Section: contrib/devel
 Architecture: all
 Depends: edm
 Description: CPU and Memory usage statistics for IOCs
