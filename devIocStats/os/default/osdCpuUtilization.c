@@ -1,5 +1,6 @@
 /*************************************************************************\
-* Copyright (c) 2009 Helmholtz-Zentrum Berlin fuer Materialien und Energie.
+* Copyright (c) 2009-2010 Helmholtz-Zentrum Berlin
+*     fuer Materialien und Energie GmbH.
 * Copyright (c) 2002 The University of Chicago, as Operator of Argonne
 *     National Laboratory.
 * Copyright (c) 2002 The Regents of the University of California, as
@@ -9,36 +10,20 @@
 * in file LICENSE that is included with this distribution.
 \*************************************************************************/
 
-/* osdSuspTasks.c - Number of suspended tasks: default implementation = use EPICS task watchdog */
+/* osdCpuUtilization.c - CPU Utilization: default implementation = do nothing */
 
 /*
  *  Author: Ralph Lange (HZB/BESSY)
  *
  *  Modification History
- *  2009-05-20 Ralph Lange (HZB/BESSY)
- *     Restructured OSD parts
  *
  */
 
-#include <taskwd.h>
-#include <epicsThread.h>
 #include <devIocStats.h>
 
-static int suspendedTasks = 0;
-
-static void taskFault(void *user, epicsThreadId tid)
-{
-    suspendedTasks++;
-}
-
-int devIocStatsInitSuspTasks (void)
-{
-    taskwdAnyInsert(NULL, taskFault, NULL);
+int devIocStatsInitCpuUtilization (loadInfo *pval) {
+    pval->noOfCpus = NO_OF_CPUS;
     return 0;
 }
 
-int devIocStatsGetSuspTasks (int *pval)
-{
-    *pval = suspendedTasks;
-    return 0;
-}
+int devIocStatsGetCpuUtilization (loadInfo *pval) { return -1; }

@@ -82,14 +82,13 @@
                 <EPICS environment variable from envDefs.h>
 */
 
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include <epicsStdio.h>
 #include <epicsVersion.h>
 #include <epicsTime.h>
 #include <epicsExport.h>
-#include <osiSock.h>
 
 #include <dbAccess.h>
 #include <devSup.h>

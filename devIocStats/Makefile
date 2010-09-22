@@ -16,13 +16,18 @@ INC += devIocStatsOSD.h
 
 LIBRARY_IOC = devIocStats
 
+devIocStats_LIBS = $(EPICS_BASE_IOC_LIBS)
+devIocStats_SYS_LIBS_solaris = kstat
+
 # OSI parts
 SRCS += devIocStatsAnalog.c
 SRCS += devIocStatsString.c
+SRCS += devIocStatsSub.c
 SRCS += devIocStatsTest.c
 
 # OSD parts
 SRCS += osdCpuUsage.c
+SRCS += osdCpuUtilization.c
 SRCS += osdFdUsage.c
 SRCS += osdMemUsage.c
 SRCS += osdClustInfo.c
@@ -33,7 +38,6 @@ SRCS += osdSystemInfo.c
 SRCS += osdHostInfo.c
 
 devIocStats_LIBS = $(EPICS_BASE_IOC_LIBS)
-
 #===========================
 
 include $(TOP)/configure/RULES
