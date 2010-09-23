@@ -1,3 +1,9 @@
+deviocstats (3.1.3-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Thu, 23 Sep 2010 09:50:59 -0400
+
 deviocstats (3.1.1-4) unstable; urgency=low
 
   * Install in /usr/lib/epics
