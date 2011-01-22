@@ -26,19 +26,19 @@ DEB_MAKE_INVOKE  = $(DEB_MAKE_ENVVARS) $(MAKE) $(DEB_MAKE_MAKEVARS)
 
 build: build-stamp
 build-stamp:
-	dh build --before auto_configure
+	dh build --before auto_configure --with rtems
 
 	$(DEB_MAKE_INVOKE)
 
-	dh build --after auto_test
+	dh build --after auto_test --with rtems
 	touch $@
 
 clean:
-	dh clean --before auto_clean
+	dh clean --before auto_clean --with rtems
 
 	$(DEB_MAKE_INVOKE) distclean
 
-	dh clean --after auto_clean
+	dh clean --after auto_clean --with rtems
 
 prefix=debian/tmp/usr
 epicsdir=$(prefix)/lib/epics
@@ -46,7 +46,7 @@ epicslibdir=$(epicsdir)/lib/$(EPICS_HOST_ARCH)
 
 install: build install-stamp
 install-stamp:
-	dh install --before auto_install
+	dh install --before auto_install --with rtems
 
 	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/lib/epics
 
@@ -66,27 +66,19 @@ install-stamp:
 	install -m 644 -t debian/epics-iocstats/usr/lib/epics/as/req \
 	debian/ioc_stats_settings.req
 
-	dh install --after auto_install
+	dh install --after auto_install --with rtems
 	touch $@
 
 binary-arch: install
-	dh binary-arch --before perl
-
-	dh_rtems
-
-	dh binary-arch --after perl --before strip
-
-	dh_strip -Xrtems
-
-	dh binary-arch --after strip --before makeshlibs
+	dh binary-arch --before makeshlibs --with rtems
 
 	dh_makeshlibs -Nepics-iocstats-dev -a
 	# prevent the .so symlinks under usr/lib/epics/lib from being detected.
 	dh_makeshlibs -pepics-iocstats-dev -Xusr/lib/epics
 
-	dh binary-arch --after makeshlibs
+	dh binary-arch --after makeshlibs --with rtems
 
 binary-indep: install
-	dh binary-indep
+	dh binary-indep --with rtems
 
 binary: binary-arch binary-indep

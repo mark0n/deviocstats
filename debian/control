@@ -60,7 +60,7 @@ Description: CPU and Memory usage statistics for IOCs
  shipped with this support.
 
 Package: rtems-iocstats-mvme2100
-Architecture: any
+Architecture: all
 Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version})
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
@@ -69,7 +69,7 @@ Description: CPU and Memory usage statistics for IOCs
  This package contains support for the MVME2100 PowerPC based VME SBC.
 
 Package: rtems-iocstats-mvme2307
-Architecture: any
+Architecture: all
 Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version})
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
@@ -78,7 +78,7 @@ Description: CPU and Memory usage statistics for IOCs
  This package contains support for the MVME2307 PowerPC based VME SBC.
 
 Package: rtems-iocstats-mvme3100
-Architecture: any
+Architecture: all
 Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version})
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
@@ -87,7 +87,7 @@ Description: CPU and Memory usage statistics for IOCs
  This package contains support for the MVME3100 PowerPC based VME SBC.
 
 Package: rtems-iocstats-mvme5500
-Architecture: any
+Architecture: all
 Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version})
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects

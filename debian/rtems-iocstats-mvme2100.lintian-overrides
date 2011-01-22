@@ -1,2 +1,8 @@
-rtems-iocstats-mvme2100: non-standard-dir-in-usr usr/epics/
-rtems-iocstats-mvme2100: file-in-unusual-dir
+rtems-iocstats-mvme2100: arch-independent-package-contains-binary-or-object
+# Target binaries are independent of the host
+rtems-iocstats-mvme2100: executable-not-elf-or-script
+# .boot files
+rtems-iocstats-mvme2100: statically-linked-binary
+# Everything RTEMS is statically linked
+rtems-iocstats-mvme2100: unstripped-binary-or-object
+# The user must decide whether to strip
