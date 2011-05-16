@@ -14,9 +14,12 @@ include $(TOP)/configure/CONFIG
 DB += ioc.db
 DB += iocRTOS.db
 DB += iocVxWorksOnly.db
+DB += iocRTEMSOnly.db
 DB += iocEnvVar.db
 DB += iocCluster.db
 DB += iocScanMon.db
+DB += iocScanMonSum.db
+DB += iocGeneralTime.db
 DB += access.db
 DB += iocAdminVxWorks.db
 DB += iocAdminSoft.db

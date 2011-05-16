@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 455
-y 191
+x 536
+y 334
 w 540
-h 580
+h 585
 font "helvetica-medium-r-12.0"
 ctlFont "helvetica-medium-r-12.0"
 btnFont "helvetica-medium-r-12.0"
@@ -46,9 +46,9 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 325
+x 320
 y 45
-w 205
+w 210
 h 205
 lineColor index 3
 fill
@@ -180,7 +180,7 @@ font "helvetica-medium-r-12.0"
 3d
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -332,7 +332,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -355,7 +355,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -378,7 +378,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -400,7 +400,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -422,7 +422,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -444,7 +444,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -486,7 +486,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -528,7 +528,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -551,7 +551,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -574,7 +574,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -740,7 +740,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -783,7 +783,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -805,7 +805,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -847,7 +847,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -869,7 +869,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -968,7 +968,7 @@ fill
 fillColor index 3
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -990,7 +990,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1092,7 +1092,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1102,7 +1102,7 @@ x 430
 y 480
 w 95
 h 30
-controlPv "$(ioc):LOAD"
+controlPv "$(ioc):IOC_CPU_LOAD"
 fgColor index 16
 fgAlarm
 bgColor index 12
@@ -1148,7 +1148,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1170,7 +1170,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1232,7 +1232,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1255,7 +1255,7 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1298,96 +1298,6 @@ value {
 autoSize
 endObjectProperties
 
-# (Related Display)
-object relatedDisplayClass
-beginObjectProperties
-major 4
-minor 2
-release 0
-x 365
-y 160
-w 125
-h 25
-fgColor index 14
-bgColor index 4
-topShadowColor index 1
-botShadowColor index 11
-font "helvetica-medium-r-12.0"
-buttonLabel "Alarm Limits..."
-numPvs 4
-numDsps 1
-displayFileName {
-  0 "ioc_stats_limits"
-}
-menuLabel {
-  0 "$(ioc) Alarm Limits"
-}
-setPosition {
-  0 "button"
-}
-endObjectProperties
-
-# (Related Display)
-object relatedDisplayClass
-beginObjectProperties
-major 4
-minor 2
-release 0
-x 365
-y 190
-w 125
-h 25
-fgColor index 14
-bgColor index 4
-topShadowColor index 1
-botShadowColor index 11
-font "helvetica-medium-r-12.0"
-buttonLabel "EPICS Env Vars..."
-numPvs 4
-numDsps 1
-displayFileName {
-  0 "ioc_stats_epics_env"
-}
-setPosition {
-  0 "parentWindow"
-}
-endObjectProperties
-
-# (Related Display)
-object relatedDisplayClass
-beginObjectProperties
-major 4
-minor 2
-release 0
-x 365
-y 220
-w 125
-h 25
-fgColor index 14
-bgColor index 4
-topShadowColor index 1
-botShadowColor index 11
-font "helvetica-medium-r-12.0"
-buttonLabel "Release Versions,,,"
-numPvs 4
-numDsps 1
-displayFileName {
-  0 "ioc_stats_release"
-}
-setPosition {
-  0 "parentWindow"
-}
-symbols {
-  0 "ioc=$(ioc),idx=0,p=1"
-}
-replaceSymbols {
-  0 1
-}
-propagateMacros {
-  0 0
-}
-endObjectProperties
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
@@ -1408,7 +1318,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1450,7 +1360,7 @@ value {
 autoSize
 endObjectProperties
 
-# (Text Update)
+# (Textupdate)
 object TextupdateClass
 beginObjectProperties
 major 10
@@ -1490,5 +1400,130 @@ value {
   "# System CPUs"
 }
 autoSize
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 2
+release 0
+x 325
+y 160
+w 85
+h 25
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-12.0"
+buttonLabel "Alarm Limits..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "ioc_stats_limits"
+}
+menuLabel {
+  0 "$(ioc) Alarm Limits"
+}
+setPosition {
+  0 "button"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 2
+release 0
+x 415
+y 160
+w 110
+h 25
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-12.0"
+buttonLabel "EPICS Env Vars..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "ioc_stats_epics_env"
+}
+setPosition {
+  0 "parentWindow"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 2
+release 0
+x 325
+y 190
+w 115
+h 25
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-12.0"
+buttonLabel "Release Versions..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "ioc_stats_release"
+}
+setPosition {
+  0 "parentWindow"
+}
+symbols {
+  0 "ioc=$(ioc),idx=0,p=1"
+}
+replaceSymbols {
+  0 1
+}
+propagateMacros {
+  0 0
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 2
+release 0
+x 325
+y 220
+w 115
+h 25
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 11
+font "helvetica-medium-r-12.0"
+buttonLabel "Scan Monitor..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "ioc_stats_scanmon"
+}
+setPosition {
+  0 "parentWindow"
+}
+symbols {
+  0 "ioc=$(ioc)"
+}
+replaceSymbols {
+  0 1
+}
+propagateMacros {
+  0 0
+}
 endObjectProperties
 

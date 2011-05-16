@@ -41,6 +41,9 @@
  *              Restructured OSD parts
  *  2010-07-14  Ralph Lange (HZB/BESSY)
  *              Added CPU Utilization (IOC load), number of CPUs
+ *  2010-08-12  Stephanie Allison (SLAC):
+ *              Added RAM workspace support developed by
+ *              Charlie Xu.
  */
 
 /*
@@ -71,6 +74,9 @@
                 inp_errs	 - number of IF input  errors
                 out_errs	 - number of IF output errors
 		records	         - number of records
+                workspace_alloc_bytes - number of RAM workspace allocated bytes
+                workspace_free_bytes  - number of RAM workspace free bytes
+                workspace_total_bytes - number of RAM workspace total bytes
 
 	ai (DTYP="IOC stats clusts"):
                 clust_info <pool> <index> <type> where:
@@ -179,6 +185,9 @@ static void statsAllocBytes(double*);
 static void statsAllocBlocks(double*);
 static void statsMaxFree(double*);
 static void statsTotalBytes(double*);
+static void statsWSFreeBytes(double*);
+static void statsWSAllocBytes(double*);
+static void statsWSTotalBytes(double*);
 static void statsCpuUsage(double*);
 static void statsCpuUtilization(double*);
 static void statsNoOfCpus(double*);
@@ -206,6 +215,9 @@ static validGetParms statsGetParms[]={
 	{ "allocated_bytes",		statsAllocBytes,	MEMORY_TYPE },
 	{ "allocated_blocks",		statsAllocBlocks,	MEMORY_TYPE },
         { "total_bytes",		statsTotalBytes,	MEMORY_TYPE },
+        { "workspace_alloc_bytes",	statsWSAllocBytes,	MEMORY_TYPE },
+        { "workspace_free_bytes",	statsWSFreeBytes,	MEMORY_TYPE },
+        { "workspace_total_bytes",	statsWSTotalBytes,	MEMORY_TYPE },
         { "sys_cpuload",		statsCpuUsage,		LOAD_TYPE },
         { "ioc_cpuload",		statsCpuUtilization,	LOAD_TYPE },
         { "cpu",			statsCpuUtilization,    LOAD_TYPE },
@@ -242,6 +254,7 @@ aStats devAiClusts = {6,NULL,ai_clusts_init,ai_clusts_init_record,NULL,ai_clusts
 epicsExportAddress(dset,devAiClusts);
 
 static memInfo meminfo = {0,0,0,0,0,0};
+static memInfo workspaceinfo = {0,0,0,0,0,0};
 static scanInfo scan[TOTAL_TYPES] = {{0}};
 static fdInfo fdusage = {0,0};
 static loadInfo loadinfo = {1,0.,0.};
@@ -259,7 +272,7 @@ static void timerQCreate(void*unused)
 }
 
 static epicsTimerId
-wdogCreate(void (*fn)(int), int arg)
+wdogCreate(void (*fn)(int), long arg)
 {
 	static epicsThreadOnceId inited = EPICS_THREAD_ONCE_INIT;
 
@@ -288,7 +301,7 @@ static long ai_clusts_init(int pass)
 
 static long ai_init(int pass)
 {
-    int i;
+    long i;
 
     if (pass) return 0;
 
@@ -307,6 +320,7 @@ static long ai_init(int pass)
     devIocStatsInitCpuUtilization(&loadinfo);
     devIocStatsInitFDUsage();
     devIocStatsInitMemUsage();
+    devIocStatsInitWorkspaceUsage();
     devIocStatsInitSuspTasks();
     devIocStatsInitIFErrors();
 
@@ -442,6 +456,8 @@ static long ai_ioint_info(int cmd,aiRecord* pr,IOSCANPVT* iopvt)
 {
 	pvtArea* pvt=(pvtArea*)pr->dpvt;
 
+	if (!pvt) return S_dev_badInpType;
+
 	if(cmd==0) /* added */
 	{
 		if(scan[pvt->type].total++ == 0)
@@ -465,7 +481,11 @@ static long ao_write(aoRecord* pr)
 {
 	unsigned long sec=pr->val;
 	pvtArea	*pvt=(pvtArea*)pr->dpvt;
-	int		type=pvt->type;
+	int type;
+
+	if (!pvt) return S_dev_badInpType;
+
+	type=pvt->type;
         
         if (sec > 0.0)
           scan[type].rate_sec=sec;
@@ -480,6 +500,8 @@ static long ai_clusts_read(aiRecord* prec)
 {
     pvtClustArea* pvt=(pvtClustArea*)prec->dpvt;
 
+    if (!pvt) return S_dev_badInpType;
+
     if (pvt->size < CLUSTSIZES)
         prec->val = clustinfo[pvt->pool][pvt->size][pvt->elem];
     else
@@ -493,6 +515,8 @@ static long ai_read(aiRecord* pr)
 {
     double val;
     pvtArea* pvt=(pvtArea*)pr->dpvt;
+
+    if (!pvt) return S_dev_badInpType;
 
     statsGetParms[pvt->index].func(&val);
     pr->val = val;
@@ -510,6 +534,7 @@ static void read_mem_stats(void)
 	if((nt-scan[MEMORY_TYPE].last_read_sec)>=scan[MEMORY_TYPE].rate_sec)
 	{
             devIocStatsGetMemUsage(&meminfo);
+            devIocStatsGetWorkspaceUsage(&workspaceinfo);
             scan[MEMORY_TYPE].last_read_sec=nt;
         }
 }
@@ -582,6 +607,21 @@ static void statsTotalBytes(double* val)
 {
     read_mem_stats();
     *val=(double)meminfo.numBytesTotal;
+}
+static void statsWSAllocBytes(double* val)
+{
+    read_mem_stats();
+    *val=(double)workspaceinfo.numBytesAlloc;
+}
+static void statsWSFreeBytes(double* val)
+{
+    read_mem_stats();
+    *val=(double)workspaceinfo.numBytesFree;
+}
+static void statsWSTotalBytes(double* val)
+{
+    read_mem_stats();
+    *val=(double)workspaceinfo.numBytesTotal;
 }
 static void statsCpuUsage(double* val)
 {
