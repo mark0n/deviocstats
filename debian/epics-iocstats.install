@@ -1,0 +1,3 @@
+usr/lib/epics/db/*.db
+usr/lib/epics/dbd/*.dbd
+debian/ioc_stats_settings.req usr/lib/epics/as/req

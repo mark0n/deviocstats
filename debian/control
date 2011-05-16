@@ -1,0 +1,102 @@
+Source: deviocstats
+Section: devel
+Priority: extra
+Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
+Build-Depends: debhelper (>= 7), epics-debhelper (>= 6~),
+               epics-dev (>= 3.14.11-2),
+               epics-msi,
+               rtems-epics-mvme2100,
+               rtems-epics-mvme2307,
+               rtems-epics-mvme3100,
+               rtems-epics-mvme5500,
+XS-Rtems-Build-Depends: rtems-epics
+X-Epics-Targets: .*
+Standards-Version: 3.8.0
+Homepage: http://www.slac.stanford.edu/comp/unix/package/epics/site/devIocStats/
+
+Package: libiocstats3.1.5
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: epics-iocstats (= ${source:Version})
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package provides shared libraries
+
+Package: epics-iocstats
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends},
+Recommends: edm-iocstats (= ${source:Version})
+Conflicts: epics-iocstats-dev (<< 3.1.3-3~)
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package provides the database files
+ needed by an IOC using the iocStats support.
+
+Package: epics-iocstats-dev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+         libiocstats3.1.5 (= ${binary:Version}),
+         epics-iocstats (= ${source:Version})
+Recommends: edm-iocstats (= ${source:Version})
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package provides files needed to build an
+ IOC with the iocStats support.
+
+Package: edm-iocstats
+Section: contrib/devel
+Architecture: all
+Depends: edm, ${misc:Depends},
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package provides the EDM operator displays
+ shipped with this support.
+
+Package: rtems-iocstats-mvme2100
+Architecture: all
+Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
+         ${misc:Depends},
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package contains support for the MVME2100 PowerPC based VME SBC.
+
+Package: rtems-iocstats-mvme2307
+Architecture: all
+Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
+         ${misc:Depends},
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package contains support for the MVME2307 PowerPC based VME SBC.
+
+Package: rtems-iocstats-mvme3100
+Architecture: all
+Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
+         ${misc:Depends},
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package contains support for the MVME3100 PowerPC based VME SBC.
+
+Package: rtems-iocstats-mvme5500
+Architecture: all
+Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
+         ${misc:Depends},
+Description: CPU and Memory usage statistics for IOCs
+ Provides a set of device supports which collects
+ statistics from the IOC it is running on.
+ .
+ This package contains support for the MVME5500 PowerPC based VME SBC.
