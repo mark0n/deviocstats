@@ -38,6 +38,7 @@ SRCS += osdBootInfo.c
 SRCS += osdSystemInfo.c
 SRCS += osdHostInfo.c
 
+devIocStats_LIBS = $(EPICS_BASE_IOC_LIBS)
 #===========================
 
 include $(TOP)/configure/RULES
