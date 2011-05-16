@@ -2,14 +2,15 @@ Source: deviocstats
 Section: devel
 Priority: extra
 Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
-Build-Depends: debhelper (>= 7), rtems-debhelper,
+Build-Depends: debhelper (>= 7), epics-debhelper (>= 6~),
                epics-dev (>= 3.14.11-2),
                epics-msi,
                rtems-epics-mvme2100,
                rtems-epics-mvme2307,
                rtems-epics-mvme3100,
                rtems-epics-mvme5500,
-Rtems-Depends: rtems, rtems-libbspext, rtems-cexp, rtems-epics
+XS-Rtems-Build-Depends: rtems-epics
+X-Epics-Targets: .*
 Standards-Version: 3.8.0
 Homepage: http://www.slac.stanford.edu/comp/unix/package/epics/site/devIocStats/
 

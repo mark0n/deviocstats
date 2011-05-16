@@ -1,8 +1,0 @@
-rtems-iocstats-mvme5500: arch-independent-package-contains-binary-or-object
-# Target binaries are independent of the host
-rtems-iocstats-mvme5500: executable-not-elf-or-script
-# .boot files
-rtems-iocstats-mvme5500: statically-linked-binary
-# Everything RTEMS is statically linked
-rtems-iocstats-mvme5500: unstripped-binary-or-object
-# The user must decide whether to strip

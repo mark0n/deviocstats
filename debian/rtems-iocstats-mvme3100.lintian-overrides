@@ -1,8 +1,0 @@
-rtems-iocstats-mvme3100: arch-independent-package-contains-binary-or-object
-# Target binaries are independent of the host
-rtems-iocstats-mvme3100: executable-not-elf-or-script
-# .boot files
-rtems-iocstats-mvme3100: statically-linked-binary
-# Everything RTEMS is statically linked
-rtems-iocstats-mvme3100: unstripped-binary-or-object
-# The user must decide whether to strip

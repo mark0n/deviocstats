@@ -1,84 +1,24 @@
 #!/usr/bin/make -f
 
-#export DH_VERBOSE=1
+export DH_VERBOSE=1
 
-# chop out the source version from Changelog (ie 3.14.10)
-# Taken from CDBS
-DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
-DEB_NOEPOCH_VERSION = $(shell echo $(DEB_VERSION) | cut -d: -f2-)
-SOV=$(shell echo "$(DEB_NOEPOCH_VERSION)"| cut -f 1 -d '-')
-
-EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
-
-RTEMS_TARGETS=RTEMS-mvme2100 RTEMS-mvme2307  RTEMS-mvme3100 RTEMS-mvme5500
-DEBUG_TAGETS=$(EPICS_HOST_ARCH)-debug
-TARGETS+=$(DEBUG_TAGETS) $(RTEMS_TARGETS)
-
-DEB_MAKE_MAKEVARS += EPICS_HOST_ARCH=$(EPICS_HOST_ARCH)
-DEB_MAKE_MAKEVARS += USE_RPATH=NO
-DEB_MAKE_MAKEVARS += SHRLIB_VERSION=$(SOV)
-DEB_MAKE_MAKEVARS += CROSS_COMPILER_TARGET_ARCHS="$(TARGETS)"
-
-DEB_MAKE_ENVVARS += PATH=\""$$PWD/bin/$(EPICS_HOST_ARCH):$$PATH"\"
-DEB_MAKE_ENVVARS += LD_LIBRARY_PATH=\""$$PWD/lib/$(EPICS_HOST_ARCH):$$LD_LIBRARY_PATH"\"
-
-DEB_MAKE_INVOKE  = $(DEB_MAKE_ENVVARS) $(MAKE) $(DEB_MAKE_MAKEVARS)
-
-build: build-stamp
-build-stamp:
-	dh build --before auto_configure --with rtems
-
-	$(DEB_MAKE_INVOKE)
-
-	dh build --after auto_test --with rtems
-	touch $@
-
-clean:
-	dh clean --before auto_clean --with rtems
-
-	$(DEB_MAKE_INVOKE) distclean
-
-	dh clean --after auto_clean --with rtems
-
-prefix=debian/tmp/usr
-epicsdir=$(prefix)/lib/epics
-epicslibdir=$(epicsdir)/lib/$(EPICS_HOST_ARCH)
+binary binary-arch binary-indep build clean:
+	dh $@ -Sepicsmake
+install: build
+binary-arch binary-indep: install
+binary: binary-arch binary-indep
 
 install: build install-stamp
 install-stamp:
-	dh install --before auto_install --with rtems
+	dh install --until auto_install --with rtems -Sepicsmake
 
-	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/lib/epics
+	dh_installepics
 
-	install -d $(prefix)/lib
-	mv $(epicslibdir)/libdevIocStats.so.$(SOV) $(prefix)/lib/
-	rm -f $(epicslibdir)/libdevIocStats.so
-	ln -s ../../../../lib/libdevIocStats.so.$(SOV) $(epicslibdir)/libdevIocStats.so
-
-	dh_install -pedm-iocstats iocAdmin/srcDisplay/*.edl usr/lib/epics/op/edl
+	dh install --after auto_install --until install --with rtems -Sepicsmake
 
 	# Replace some SLAC specific names with macros
 	sed -i -e 's|lcls_main|$$(HOME)|' \
 	debian/edm-iocstats/usr/lib/epics/op/edl/*.edl
 
-	install -m 644 -t debian/epics-iocstats-dev/usr/lib/epics/configure/conf.d debian/50iocstats.make
-
-	install -m 644 -t debian/epics-iocstats/usr/lib/epics/as/req \
-	debian/ioc_stats_settings.req
-
-	dh install --after auto_install --with rtems
+	dh install --after install --with rtems -Sepicsmake
 	touch $@
-
-binary-arch: install
-	dh binary-arch --before makeshlibs --with rtems
-
-	dh_makeshlibs -Nepics-iocstats-dev -a
-	# prevent the .so symlinks under usr/lib/epics/lib from being detected.
-	dh_makeshlibs -pepics-iocstats-dev -Xusr/lib/epics
-
-	dh binary-arch --after makeshlibs --with rtems
-
-binary-indep: install
-	dh binary-indep --with rtems
-
-binary: binary-arch binary-indep
