@@ -3,7 +3,7 @@
 export DH_VERBOSE=1
 
 binary binary-arch binary-indep build clean:
-	dh $@ -Sepicsmake
+	dh $@ --with epics -Sepicsmake
 install: build
 binary-arch binary-indep: install
 binary: binary-arch binary-indep
