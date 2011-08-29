@@ -25,7 +25,6 @@ DB += iocAdminVxWorks.db
 DB += iocAdminSoft.db
 DB += iocAdminRTEMS.db
 DB += iocAdminScanMon.db
-DB += baseSecurity.acf
 
 #
 #----------------------------------------------------
@@ -37,4 +36,3 @@ include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
 
-include $(TOP)/configure/RULES.Db
