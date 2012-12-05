@@ -2,7 +2,6 @@
 record(mbbo, "$(IOCNAME):ACCESS")
 {
   field(DESC, "$(IOCNAME) Acc Mode")
-  field(ASG,  "IOCMANAGERS")
   field(PINI, "YES")
   field(ZRST, "Running")
   field(ZRSV, "NO_ALARM")
@@ -19,14 +18,14 @@ record(stringin, "$(IOCNAME):STARTTOD")
     field(DESC, "Time and date of startup")
     field(DTYP, "Soft Timestamp")
     field(PINI, "YES")
-    field(INP, "@%m/%d/%Y %H:%M:%S")
+    field(INP, "@$(TODFORMAT)")
 }
 record(stringin, "$(IOCNAME):TOD")
 {
     field(DESC, "Current time and date")
     field(DTYP, "Soft Timestamp")
     field(SCAN, "1 second")
-    field(INP, "@%m/%d/%Y %H:%M:%S")
+    field(INP, "@$(TODFORMAT)")
 }
 record(calcout, "$(IOCNAME):HEARTBEAT")
 {
@@ -43,13 +42,13 @@ record(calcout, "$(IOCNAME):HEARTBEAT")
 record( sub, "$(IOCNAME):READACF")
 {
     field( DESC, "$(IOCNAME) ACF Update")
-    field( ASG,  "IOCMANAGERS")
     field( INAM, "asSubInit")
     field( SNAM, "asSubProcess")
     field( BRSV, "INVALID")
 }
 record(sub, "$(IOCNAME):SYSRESET")
 {
+    alias("$(IOCNAME):SysReset")
     field(DESC, "IOC Restart" )
     field(SNAM, "rebootProc")
     field(BRSV,"INVALID")
@@ -293,5 +292,19 @@ record(stringin, "$(IOCNAME):UPTIME") {
   field(SCAN, "1 second")
   field(DTYP, "IOC stats")
   field(INP, "@up_time")
+  field(PINI, "YES")
+}
+
+record(stringin, "$(IOCNAME):ENGINEER") {
+  field(DESC, "Engineer")
+  field(DTYP, "IOC stats")
+  field(INP, "@engineer")
+  field(PINI, "YES")
+}
+
+record(stringin, "$(IOCNAME):LOCATION") {
+  field(DESC, "Location")
+  field(DTYP, "IOC stats")
+  field(INP, "@location")
   field(PINI, "YES")
 }
