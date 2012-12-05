@@ -14,7 +14,7 @@ X-Epics-Targets: .*
 Standards-Version: 3.8.0
 Homepage: http://www.slac.stanford.edu/comp/unix/package/epics/site/devIocStats/
 
-Package: libiocstats3.1.5
+Package: libiocstats3.1.9
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
@@ -40,7 +40,7 @@ Description: CPU and Memory usage statistics for IOCs
 Package: epics-iocstats-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
-         libiocstats3.1.5 (= ${binary:Version}),
+         libiocstats3.1.9 (= ${binary:Version}),
          epics-iocstats (= ${source:Version})
 Recommends: edm-iocstats (= ${source:Version})
 Description: CPU and Memory usage statistics for IOCs
