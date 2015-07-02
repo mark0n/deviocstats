@@ -7,7 +7,8 @@ export DH_VERBOSE=1
 
 override_dh_install:
 	dh_install
-
+ifneq ($(filter edm-iocstats,$(shell dh_listpackages)),)
 	# Replace some SLAC specific names with macros
 	sed -i -e 's|lcls_main|$$(HOME)|' \
 	debian/edm-iocstats/usr/lib/epics/op/edl/*.edl
+endif
