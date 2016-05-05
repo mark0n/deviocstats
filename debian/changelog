@@ -1,3 +1,10 @@
+deviocstats (3.1.9-5) unstable; urgency=medium
+
+  * cleanup deps.
+  * update packaging to compat 9
+
+ -- Michael Davidsaver <mdavidsaver@gmail.com>  Tue, 31 May 2016 15:29:00 -0400
+
 deviocstats (3.1.9-4) unstable; urgency=medium
 
   * change install location of autosave req file.
