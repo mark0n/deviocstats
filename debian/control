@@ -11,14 +11,14 @@ Build-Depends: debhelper (>= 7), epics-debhelper (>= 6~),
                rtems-epics-mvme5500,
 XS-Rtems-Build-Depends: rtems-epics
 X-Epics-Targets: .*
-Standards-Version: 3.8.0
+Standards-Version: 3.9.6
 Homepage: http://www.slac.stanford.edu/comp/unix/package/epics/site/devIocStats/
 
 Package: libiocstats3.1.9
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Recommends: epics-iocstats (= ${source:Version})
+Recommends: epics-iocstats (= ${binary:Version}),
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
  statistics from the IOC it is running on.
@@ -28,7 +28,8 @@ Description: CPU and Memory usage statistics for IOCs
 Package: epics-iocstats
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends},
-Recommends: edm-iocstats (= ${source:Version})
+Recommends: edm-iocstats (>= ${binary:Version}),
+            edm-iocstats (<< ${binary:Version}.1~),
 Conflicts: epics-iocstats-dev (<< 3.1.3-3~)
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
@@ -41,7 +42,7 @@ Package: epics-iocstats-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
          libiocstats3.1.9 (= ${binary:Version}),
-         epics-iocstats (= ${source:Version})
+         epics-iocstats (= ${source:Version}),
 Recommends: edm-iocstats (= ${source:Version})
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
@@ -63,8 +64,9 @@ Description: CPU and Memory usage statistics for IOCs
 
 Package: rtems-iocstats-mvme2100
 Architecture: all
-Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
-         ${misc:Depends},
+Depends: ${rtems:Depends}, ${misc:Depends},
+         epics-iocstats-dev (>= ${binary:Version}),
+         epics-iocstats-dev (<< ${binary:Version}.1~),
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
  statistics from the IOC it is running on.
@@ -73,8 +75,9 @@ Description: CPU and Memory usage statistics for IOCs
 
 Package: rtems-iocstats-mvme2307
 Architecture: all
-Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
-         ${misc:Depends},
+Depends: ${rtems:Depends}, ${misc:Depends},
+         epics-iocstats-dev (>= ${binary:Version}),
+         epics-iocstats-dev (<< ${binary:Version}.1~),
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
  statistics from the IOC it is running on.
@@ -83,8 +86,9 @@ Description: CPU and Memory usage statistics for IOCs
 
 Package: rtems-iocstats-mvme3100
 Architecture: all
-Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
-         ${misc:Depends},
+Depends: ${rtems:Depends}, ${misc:Depends},
+         epics-iocstats-dev (>= ${binary:Version}),
+         epics-iocstats-dev (<< ${binary:Version}.1~),
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
  statistics from the IOC it is running on.
@@ -93,8 +97,9 @@ Description: CPU and Memory usage statistics for IOCs
 
 Package: rtems-iocstats-mvme5500
 Architecture: all
-Depends: ${rtems:Depends}, epics-iocstats-dev (= ${binary:Version}),
-         ${misc:Depends},
+Depends: ${rtems:Depends}, ${misc:Depends},
+         epics-iocstats-dev (>= ${binary:Version}),
+         epics-iocstats-dev (<< ${binary:Version}.1~),
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
  statistics from the IOC it is running on.
