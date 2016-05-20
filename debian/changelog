@@ -1,3 +1,9 @@
+deviocstats (3.1.9-4) unstable; urgency=medium
+
+  * change install location of autosave req file.
+
+ -- Daron Chabot <chabot@frib.msu.edu>  Fri, 20 May 2016 13:53:34 -0400
+
 deviocstats (3.1.9-3) unstable; urgency=medium
 
   * Fix build with -B
