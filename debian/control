@@ -43,7 +43,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
          libiocstats3.1.9 (= ${binary:Version}),
          epics-iocstats (= ${source:Version}),
-Recommends: edm-iocstats (= ${source:Version})
+Suggests: edm-iocstats (= ${source:Version})
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
  statistics from the IOC it is running on.
