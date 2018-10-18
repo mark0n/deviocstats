@@ -2,13 +2,13 @@ Source: deviocstats
 Section: devel
 Priority: extra
 Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
-Build-Depends: debhelper (>= 9), epics-debhelper (>= 8.14~),
-               epics-dev (>= 3.14.11-2),
+Build-Depends: debhelper (>= 9.20141010), dpkg-dev (>= 1.17.14),
+               epics-debhelper (>= 8.14~), epics-dev (>= 3.14.11-2),
                epics-msi,
-               rtems-epics-mvme2100,
-               rtems-epics-mvme2307,
-               rtems-epics-mvme3100,
-               rtems-epics-mvme5500,
+               rtems-epics-mvme2100 <pkg.epics-base.rtems>,
+               rtems-epics-mvme2307 <pkg.epics-base.rtems>,
+               rtems-epics-mvme3100 <pkg.epics-base.rtems>,
+               rtems-epics-mvme5500 <pkg.epics-base.rtems>,
 XS-Rtems-Build-Depends: rtems-epics
 X-Epics-Targets: .*
 Standards-Version: 3.9.6
@@ -63,6 +63,7 @@ Description: CPU and Memory usage statistics for IOCs
  shipped with this support.
 
 Package: rtems-iocstats-mvme2100
+Build-Profiles: <pkg.epics-base.rtems>
 Architecture: all
 Depends: ${rtems:Depends}, ${misc:Depends},
          epics-iocstats-dev (>= ${binary:Version}),
@@ -74,6 +75,7 @@ Description: CPU and Memory usage statistics for IOCs
  This package contains support for the MVME2100 PowerPC based VME SBC.
 
 Package: rtems-iocstats-mvme2307
+Build-Profiles: <pkg.epics-base.rtems>
 Architecture: all
 Depends: ${rtems:Depends}, ${misc:Depends},
          epics-iocstats-dev (>= ${binary:Version}),
@@ -85,6 +87,7 @@ Description: CPU and Memory usage statistics for IOCs
  This package contains support for the MVME2307 PowerPC based VME SBC.
 
 Package: rtems-iocstats-mvme3100
+Build-Profiles: <pkg.epics-base.rtems>
 Architecture: all
 Depends: ${rtems:Depends}, ${misc:Depends},
          epics-iocstats-dev (>= ${binary:Version}),
@@ -96,6 +99,7 @@ Description: CPU and Memory usage statistics for IOCs
  This package contains support for the MVME3100 PowerPC based VME SBC.
 
 Package: rtems-iocstats-mvme5500
+Build-Profiles: <pkg.epics-base.rtems>
 Architecture: all
 Depends: ${rtems:Depends}, ${misc:Depends},
          epics-iocstats-dev (>= ${binary:Version}),
