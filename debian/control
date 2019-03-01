@@ -1,7 +1,7 @@
 Source: deviocstats
 Section: devel
 Priority: extra
-Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
+Maintainer: Martin Konrad <mkonrad@frib.msu.edu>
 Build-Depends: debhelper (>= 9.20141010), dpkg-dev (>= 1.17.14),
                epics-debhelper (>= 8.14~), epics-dev (>= 3.14.11-2),
                epics-msi,
@@ -14,7 +14,7 @@ X-Epics-Targets: .*
 Standards-Version: 3.9.6
 Homepage: http://www.slac.stanford.edu/comp/unix/package/epics/site/devIocStats/
 
-Package: libiocstats3.1.9
+Package: libiocstats3.1.15
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
@@ -41,7 +41,7 @@ Description: CPU and Memory usage statistics for IOCs
 Package: epics-iocstats-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
-         libiocstats3.1.9 (= ${binary:Version}),
+         libiocstats3.1.15 (= ${binary:Version}),
          epics-iocstats (= ${source:Version}),
 Suggests: edm-iocstats (= ${source:Version})
 Description: CPU and Memory usage statistics for IOCs
