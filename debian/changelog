@@ -1,3 +1,9 @@
+deviocstats (3.1.15-1) unstable; urgency=medium
+
+  * New upstream version 3.1.15
+
+ -- Martin Konrad <konrad@frib.msu.edu>  Thu, 28 Feb 2019 19:19:33 -0500
+
 deviocstats (3.1.9-7) unstable; urgency=medium
 
   * edm-iocstats: Don't depend on EDM anymore
