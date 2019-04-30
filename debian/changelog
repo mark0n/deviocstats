@@ -1,3 +1,9 @@
+deviocstats (3.1.16-1) unstable; urgency=medium
+
+  * New upstream version 3.1.16
+
+ -- Martin Konrad <konrad@frib.msu.edu>  Tue, 30 Apr 2019 19:44:32 -0400
+
 deviocstats (3.1.15-1) unstable; urgency=medium
 
   * New upstream version 3.1.15
