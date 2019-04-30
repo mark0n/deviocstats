@@ -47,7 +47,6 @@ SRCS += osdPIDInfo.c
 
 OBJS_vxWorks += osdCpuUsageTest.o
 
-devIocStats_LIBS = $(EPICS_BASE_IOC_LIBS)
 #===========================
 
 include $(TOP)/configure/RULES
