@@ -28,8 +28,8 @@ Description: CPU and Memory usage statistics for IOCs
 Package: epics-iocstats
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends},
-Recommends: edm-iocstats (>= ${binary:Version}),
-            edm-iocstats (<< ${binary:Version}.1~),
+Suggests: edm-iocstats (>= ${binary:Version}),
+          edm-iocstats (<< ${binary:Version}.1~),
 Conflicts: epics-iocstats-dev (<< 3.1.3-3~)
 Description: CPU and Memory usage statistics for IOCs
  Provides a set of device supports which collects
