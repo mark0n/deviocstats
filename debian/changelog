@@ -1,3 +1,9 @@
+deviocstats (3.1.16-2) unstable; urgency=medium
+
+  * Convert to quilt format
+
+ -- Martin Konrad <konrad@frib.msu.edu>  Mon, 15 Jul 2019 11:17:19 -0400
+
 deviocstats (3.1.16-1) unstable; urgency=medium
 
   * New upstream version 3.1.16
